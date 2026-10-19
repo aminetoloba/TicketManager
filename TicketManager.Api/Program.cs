@@ -1,8 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
 using TicketManager.Api.Data;
-using TicketManager.Api.Services;
 using TicketManager.Api.Middleware;
+using TicketManager.Api.Repositories;
+using TicketManager.Api.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,6 +24,7 @@ builder.Services.AddProblemDetails();
 
 builder.Services.AddScoped<IProjectService, ProjectService>();
 builder.Services.AddScoped<ITicketService, TicketService>();
+builder.Services.AddScoped<ITicketReportRepository, TicketReportRepository>();
 
 var app = builder.Build();
 
